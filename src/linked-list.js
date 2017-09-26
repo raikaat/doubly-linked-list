@@ -72,7 +72,7 @@ class LinkedList {
     if (!this.head) {
     return -1;
     } else {
-    retrun "Not empty";
+    return "Not empty";
     }
     }
 
