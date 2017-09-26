@@ -2,34 +2,34 @@ const Node = require('./node');
 
 class LinkedList {
     constructor() {
-    this.head = null;
-    this.tail = null;
+    this._head = null;
+    this._tail = null;
     this.length = 0;
     }
 
     append(data) {
     var node = new Node(data);
-    if (!this.head) {
-    this.head = node;
-    this.tail = node;
+    if (!this._head) {
+    this._head = node;
+    this._tail = node;
     } else {
-    node.prev = this.tail;
-    this.tail.next = node;
-    this.tail = node;		
+    node.prev = this._tail;
+    this._tail.next = node;
+    this._tail = node;		
     }
     this.length++; 
     }
 
     head() {
-    return this.head;
+    return this._head.data;
     }
 
     tail() {
-    return this.tail;
+    return this._tail.data;
     }
 
     at(index) {
-    var currentNode = this.head;
+    var currentNode = this._head;
     for (var i = 0; i < index; i++) {
 	currentNode = currentNode.next;
 	}
@@ -42,20 +42,20 @@ class LinkedList {
     }
     var node = new Node(data);
     if (index === 0 && this.length>2) {
-    node.next = this.head;
-    this.head.prev = node;
-    this.head = node;
+    node.next = this._head;
+    this._head.prev = node;
+    this._head = node;
     }
     else if (index === 0 && this.length ===1) {
-    node.next = this.tail;
-    this.head = node;
-    this.tail.prev = this.head;
+    node.next = this._tail;
+    this._head = node;
+    this._tail.prev = this._head;
     }
     else if ((index === 0) || ((index!= 1) && (index === this.length))) {
     return this.append(data);
     } 
     else {
-    var previousNode = this.head;
+    var previousNode = this._head;
     for (var i = 0; i < index-1; i++) {
     previousNode = previousNode.next;
     }
@@ -69,10 +69,10 @@ class LinkedList {
     }
 
     isEmpty() {
-    if (!this.head) {
-    return -1;
+    if (!this._head) {
+    return true;
     } else {
-    return "Not empty";
+    return false;
     }
     }
 
@@ -82,20 +82,20 @@ class LinkedList {
     if (index > this.length) {
     return "Out of length";
     }
-    var currentNode = this.head;
+    var currentNode = this._head;
     for (var i = 0; i < index-1; i++) {
     currentNode = currentNode.next;
     }
-    if ((currentNode === this.head) && (currentNode === this.tail)) {
-    this.head = null;
-    this.tail = null;
+    if ((currentNode === this._head) && (currentNode === this._tail)) {
+    this._head = null;
+    this._tail = null;
     }
-    else if (currentNode === this.head) {
-    this.tail = currentNode.next;
+    else if (currentNode === this._head) {
+    this._tail = currentNode.next;
     currentNode.prev = null;
     }
-    else if (currentNode === this.tail) {
-    this.tail = currentNode.prev;
+    else if (currentNode === this._tail) {
+    this._tail = currentNode.prev;
     currentNode.next = null;
     }
     else {
@@ -108,7 +108,7 @@ class LinkedList {
     reverse() {}
 
     indexOf(data) {
-    var currentNode = this.head;
+    var currentNode = this._head;
     var i = 0;
     for (; i < this.length; i++) {
     if (currentNode.data != data)
