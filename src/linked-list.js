@@ -109,12 +109,11 @@ class LinkedList {
 
     indexOf(data) {
     var currentNode = this._head;
-    var i = 0;
-    for (; i < this.length-1; i++) {
-    if (currentNode.data != data)
+    var count = 0;
+    while (currentNode.data != data) {
 	currentNode = currentNode.next;
-	}
-    return i;
+    }
+    return count;
     }
 }
 
