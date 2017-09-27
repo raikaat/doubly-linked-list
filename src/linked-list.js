@@ -37,7 +37,7 @@ class LinkedList {
     }
 
     insertAt(index, data) {
-    if (index>this.length) {
+    if (index>=this.length) {
 	return "Index out of length";
     }
     var node = new Node(data);
@@ -56,7 +56,7 @@ class LinkedList {
     } 
     else {
     var previousNode = this._head;
-    for (var i = 0; i < index-1; i++) {
+    for (var i = 0; i < index; i++) {
     previousNode = previousNode.next;
     }
     var currentNode = previousNode.next;
@@ -76,14 +76,20 @@ class LinkedList {
     }
     }
 
-    clear() {}
+    clear() {
+    this._head.next = null;
+    this._head = null;
+    this._tail.prev = null;
+    this._tail = null;
+    this.length = 0;
+    }
 
     deleteAt(index) {
     if (index > this.length) {
     return "Out of length";
     }
     var currentNode = this._head;
-    for (var i = 0; i < index-1; i++) {
+    for (var i = 0; i < index; i++) {
     currentNode = currentNode.next;
     }
     if ((currentNode === this._head) && (currentNode === this._tail)) {
