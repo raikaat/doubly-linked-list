@@ -118,16 +118,17 @@ class LinkedList {
     }
 
     reverse() {}
-
+	
     indexOf(data) {
     var currentNode = this._head;
     var count = 0;
-    while (currentNode.data != data) {
-	currentNode = currentNode.next;
-	count++;
-    }
-    return count;
-    }
+    for (var i = 0; i < this.length;) {
+    if (currentNode.data === data) return i;
+    currentNode = currentNode.next;
+    i++;
+    }   
+    return -1;
+    }    
 }
 
 module.exports = LinkedList;
