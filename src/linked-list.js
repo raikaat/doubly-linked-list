@@ -32,6 +32,7 @@ class LinkedList {
     } else {
     return this._tail.data;
     }
+    }
 
     at(index) {
     var currentNode = this._head;
@@ -123,6 +124,7 @@ class LinkedList {
     var count = 0;
     while (currentNode.data != data) {
 	currentNode = currentNode.next;
+	count++;
     }
     return count;
     }
