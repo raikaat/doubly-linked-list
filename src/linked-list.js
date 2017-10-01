@@ -33,7 +33,7 @@ class LinkedList {
     for (var i = 0; i < index; i++) {
 	currentNode = currentNode.next;
 	}
-    return currentNode;
+    return currentNode.data;
     }
 
     insertAt(index, data) {
