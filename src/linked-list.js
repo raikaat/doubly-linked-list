@@ -21,10 +21,15 @@ class LinkedList {
     }
 
     head() {
+    if (!this._head) {return null;
+    } else {
     return this._head.data;
     }
+    }
 
-    tail() {
+    tail() { 
+    if (!this._tail) {return null;
+    } else {
     return this._tail.data;
     }
 
